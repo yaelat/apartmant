@@ -8,9 +8,11 @@ public class Transactions
     public int Price { get; set; }
     public int CustomerId { get; set; }
     public int SellerId { get; set; }
-    [ForeignKey(nameof(CustomerId))]
+
+    [ForeignKey("CustomerId"), Column(Order = 0)]
     public Customer Customer { get; set; }
-    [ForeignKey(nameof(SellerId))]
+
+    [ForeignKey("SellerId"), Column(Order = 1)]
     public Customer Seller { get; set; }
     public DateTime transactioDate { get; set; }
 

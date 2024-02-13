@@ -1,3 +1,4 @@
+using Solid.Core;
 using Solid.Core.Repositories;
 using Solid.Core.service;
 using Solid.data;
@@ -19,6 +20,7 @@ builder.Services.AddScoped<ITransactionsRepository, TransactionsRepository>();
 builder.Services.AddScoped<ISaleAndRentingRepository, SaleAndRentingRepository>();
 builder.Services.AddScoped<ICustomersRepository, CustomersRepository>();
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

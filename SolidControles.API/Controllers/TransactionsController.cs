@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ObjectPool;
+using Solid.Api.Models;
+using Solid.Core.DTOs;
 using Solid.Core.Entities;
 using Solid.Core.service;
 using Solid.Service;
@@ -11,31 +14,39 @@ namespace apartmant.Controllers
     [ApiController]
     public class TransactionsController : ControllerBase
     {
-        
+        private readonly IMapper _mapper;
         private readonly ITransactionsService _transactionsService;
         // GET: api/<RecreationController>
-        public TransactionsController(ITransactionsService transactionsService)
+        public TransactionsController(ITransactionsService transactionsService,IMapper mapper)
         {
             _transactionsService = transactionsService;
+            _mapper = mapper;
         }
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_transactionsService.GetAllTransactions());
+            var transactions = _transactionsService.GetAllTransactions();
+            var transactionsDto = _mapper.Map<IEnumerable<TransactionDto>>(transactions);
+            return Ok(transactionsDto);
         }
 
         // GET api/<RecreationController>/5
         [HttpGet("{id}")]
-        public Transactions Get(int id)
+        public ActionResult Get(int id)
         {
-            return _transactionsService.GetTransactionsById(id);
+            var transaction = _transactionsService.GetTransactionsById(id);
+            var transactionDto = _mapper.Map<TransactionDto>(transaction);
+            return Ok(transactionDto);
         }
 
         // POST api/<RecreationController>
         [HttpPost]
-        public Transactions Post([FromBody] Transactions value)
+        public ActionResult Post([FromBody] TransactionPostModel transactionPostModel)
         {
-            return _transactionsService.PostTransactions(value);
+            var transaction = _mapper.Map<Transactions>(transactionPostModel);
+            var newTransaction =_transactionsService.PostTransactions(transaction);
+            var transactionDto = _mapper.Map<TransactionDto>(newTransaction);
+            return Ok(transactionDto);
         }
 
         // PUT api/<RecreationController>/5
