@@ -4,7 +4,7 @@
 ישויות
 דירות להשכרה ,דירות למכירה ,דירות נופש.
 מיפוי Routes לדירות להשכרה
-שליפת דירות להשכרה
+שליפת דירות להשכרה<br>
 https://apartmant.co.il/renting  :GET
 שליפת דירה לפי מזהה
 https://apartmant.co.il/renting/1 :GET
