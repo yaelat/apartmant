@@ -1,51 +1,51 @@
-דירות
-תיאור הפרויקט
-מערכת פרסום לדירות לכל צורך שהוא בה כל אדם יכול לפרסם את דירתו
-ישויות
-דירות להשכרה ,דירות למכירה ,דירות נופש.
-מיפוי Routes לדירות להשכרה
-שליפת דירות להשכרה<br>
-https://apartmant.co.il/renting  :GET
-שליפת דירה לפי מזהה
-https://apartmant.co.il/renting/1 :GET
-הוספת דירה
-https://apartmant.co.il/renting :POST
-מחיקת דירה
-https://apartmant.co.il/renting/1 :DLETE
-עדכון דירה
-https://apartmant.co.il/renting/1:PUT
-עדכון מחיר דירה
-https://apartmant.co.il/renting/1/price :PUT
+# apartmants
+### the Project description:
 
-מיפוי Routes לדירות למכירה
-שליפת דירות למכירה
-https://apartmant.co.il/sale  :GET
-שליפת דירה לפי מזהה
-https://apartmant.co.il/sale/1 :GET
-הוספת דירה
-https://apartmant.co.il/sale :POST
-מחיקת דירה
-https://apartmant.co.il/sale/1 :DLETE
-עדכון דירה
-https://apartmant.co.il/sale/1:PUT
-עדכון מחיר דירה
-https://apartmant.co.il/sale/1/price :PUT
+A system that manages the sale and rental of apartments.\
+A person can advertise his apartment as well as buy and rent an apartment\
 
-מיפוי Routes לדירות נופש
-שליפת דירות נופש
-https://apartmant.co.il/ recreation  :GET
-שליפת דירה לפי מזהה
-https://apartmant.co.il/ recreation/1 :GET
-הוספת דירה
-https://apartmant.co.il/ recreation :POST
-מחיקת דירה
-https://apartmant.co.il/ recreation/1 :DLETE
-עדכון דירה
-https://apartmant.co.il/ recreation/1:PUT
-עדכון מחיר דירה
-https://apartmant.co.il/recreation/1/price :PUT
+### Entities:
+apartments,transactions,customers.
+
+#### Router mapping for apartments:
+Retrieving all apartments-\
+GET:https://apartmant.co.il/SaleAndRenting 
+Retrieving apartment by ID-\
+GET:https://apartmant.co.il/SaleAndRenting/id
+Add apartmant-\
+POST:https://apartmant.co.il/SaleAndRenting
+Updating an existing apartment-\
+PUT:https://apartmant.co.il/SaleAndRenting/id
+Deleting an existing apartment-\
+DELETE:https://apartmant.co.il/SaleAndRenting/id
+
+#### Router mapping for transactions:
+Retrieving all transactions-\
+GET:https://apartmant.co.il/Transactions
+Retrieving transaction by ID-\
+GET:https://apartmant.co.il/Transactions/id
+Add transaction-\
+POST:https://apartmant.co.il/Transactions
+Deleting an transaction-\
+DELETE:https://apartmant.co.il/Transactions/id
+
+#### Router mapping for customers:
+Retrieving all customers-\
+GET:https://apartmant.co.il/Customers
+Retrieving customer by ID-\
+GET:https://apartmant.co.il/Customers/id
+Add customer-\
+POST:https://apartmant.co.il/Customers
+Updating an existing customer-\
+PUT:https://apartmant.co.il/Customers/id
+Deleting an customer-\
+DELETE:https://apartmant.co.il/Customers/id
 
 
+ש
+ש
 
-דירה שנמכרת או מושכרת תוסר מהמערכת.
-לכל דירה תהיה אפשרות לעדכן רק את המחיר שלה
+
+
+
+
