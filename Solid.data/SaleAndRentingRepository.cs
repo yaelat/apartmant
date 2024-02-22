@@ -1,4 +1,5 @@
-﻿using Solid.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Solid.Core.Entities;
 using Solid.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -16,34 +17,37 @@ namespace Solid.Data
             _context = context;
         }
 
-        public void DeleteSaleAndRenting(int id)
+        public async Task DeleteSaleAndRentingAsync(int id)
         {
-            _context.saleAndRenting.Remove(_context.saleAndRenting.Find(id));
+           _context.saleAndRenting.Remove(_context.saleAndRenting.Find(id));
+            await _context.SaveChangesAsync();
         }
 
-        public List<SaleAndRenting> GetAllSaleAndRenting()
+        public async Task<List<SaleAndRenting>> GetAllSaleAndRentingAsync()
         {
-            return _context.saleAndRenting.ToList();
+            return await _context.saleAndRenting.ToListAsync();
         }
 
-        public SaleAndRenting GetSaleAndRentingById(int id)
+        public async Task<SaleAndRenting> GetSaleAndRentingByIdAsync(int id)
         {
-            return _context.saleAndRenting.Find(id);
+            return await _context.saleAndRenting.FindAsync(id);
         }
 
-        public SaleAndRenting PostSaleAndRenting(SaleAndRenting saleAndRenting)
+        public async Task<SaleAndRenting> PostSaleAndRentingAsync(SaleAndRenting saleAndRenting)
         {
             _context.saleAndRenting.Add(saleAndRenting);
+            await _context.SaveChangesAsync();
             return saleAndRenting;
         }
 
-        public void PutSaleAndRanting(int id, SaleAndRenting saleAndRenting)
+        public async Task PutSaleAndRantingAsync(int id, SaleAndRenting saleAndRenting)
         {
             var sale=_context.saleAndRenting.Find(id);
             sale.size=saleAndRenting.size;
             sale.Price = saleAndRenting.Price;
             sale.City = saleAndRenting.City;
             sale.Adress = saleAndRenting.Adress;
+            await _context.SaveChangesAsync();
         }
     }
 }

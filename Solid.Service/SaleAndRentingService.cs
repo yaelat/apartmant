@@ -18,29 +18,29 @@ namespace Solid.Service
             _saleAndRentingRepository = saleAndrentingRepository;
         }
 
-        public void DeleteSaleAndRenting(int id)
+        public async Task DeleteSaleAndRentingAsync(int id)
         {
-            _saleAndRentingRepository.DeleteSaleAndRenting(id);
+            await _saleAndRentingRepository.DeleteSaleAndRentingAsync(id);
         }
 
-        public List<SaleAndRenting> GetAllSaleAndRenting()
+        public async Task<List<SaleAndRenting>> GetAllSaleAndRentingAsync()
         {
-            return _saleAndRentingRepository.GetAllSaleAndRenting();
+            return await _saleAndRentingRepository.GetAllSaleAndRentingAsync();
         }
 
-        public SaleAndRenting GetSaleAndRentingById(int id)
+        public async Task<SaleAndRenting> GetSaleAndRentingByIdAsync(int id)
         {
-            return _saleAndRentingRepository.GetSaleAndRentingById(id);
+            return await _saleAndRentingRepository.GetSaleAndRentingByIdAsync(id);
         }
 
-        public SaleAndRenting PostSaleAndRenting(SaleAndRenting saleAndRenting)
+        public async Task<SaleAndRenting> PostSaleAndRentingAsync(SaleAndRenting saleAndRenting)
         {
-            return _saleAndRentingRepository.PostSaleAndRenting(saleAndRenting);
+            return await _saleAndRentingRepository.PostSaleAndRentingAsync(saleAndRenting);
         }
 
-        public void PutSaleAndRanting(int id, SaleAndRenting saleAndRenting)
+        public async Task PutSaleAndRantingAsync(int id, SaleAndRenting saleAndRenting)
         {
-            _saleAndRentingRepository.PutSaleAndRanting(id, saleAndRenting);
+            await _saleAndRentingRepository.PutSaleAndRantingAsync(id, saleAndRenting);
         }
     }
 }

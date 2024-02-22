@@ -9,10 +9,10 @@ namespace Solid.Core.service
 {
     public interface ISaleAndRentingService
     {
-        List<SaleAndRenting> GetAllSaleAndRenting();
-        SaleAndRenting GetSaleAndRentingById(int id);
-        SaleAndRenting PostSaleAndRenting(SaleAndRenting saleAndRenting);
-        void DeleteSaleAndRenting(int id);
-        void PutSaleAndRanting(int id, SaleAndRenting saleAndRenting);
+        Task<List<SaleAndRenting>> GetAllSaleAndRentingAsync();
+        Task<SaleAndRenting> GetSaleAndRentingByIdAsync(int id);
+        Task<SaleAndRenting> PostSaleAndRentingAsync(SaleAndRenting saleAndRenting);
+        Task DeleteSaleAndRentingAsync(int id);
+        Task PutSaleAndRantingAsync(int id, SaleAndRenting saleAndRenting);
     }
 }

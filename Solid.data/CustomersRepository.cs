@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Solid.Core.Entities;
 using Solid.Core.Repositories;
 using System;
@@ -17,36 +18,36 @@ namespace Solid.Data
             _context = context;
         }
 
-        public void DeleteCustomer(int id)
+        public async Task DeleteCustomerAsync(int id)
         {
             _context.customers.Remove(_context.customers.Find(id));
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public List<Customer> GetAllCustomers()
+        public async Task<List<Customer>> GetAllCustomersAsync()
         {
-            return _context.customers.ToList();
+            return await _context.customers.ToListAsync();
         }
 
-        public Customer GetCustomerById(int id)
+        public async Task<Customer> GetCustomerByIdAsync(int id)
         {
-            return _context.customers.Find(id);
+            return await _context.customers.FindAsync(id);
         }
 
-        public Customer PostCustomer(Customer customer)
+        public async Task<Customer> PostCustomerAsync(Customer customer)
         {
             _context.customers.Add(customer);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return customer;
         }
 
-        public void PutCustomer(int id, Customer customer)
+        public async Task PutCustomerAsync(int id, Customer customer)
         {
-            var cus= _context.customers.Find(id);
+            var cus= await _context.customers.FindAsync(id);
             cus.Name=customer.Name; 
             cus.Email=customer.Email;
             cus.Number=customer.Number;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

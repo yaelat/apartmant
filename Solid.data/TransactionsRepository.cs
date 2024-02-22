@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
 using Solid.Core.Entities;
 using Solid.Core.Repositories;
 using Solid.Data;
@@ -14,19 +15,20 @@ namespace Solid.data
 
             _context = context; 
         }
-        public List<Transactions> GetAllTransactions()
+        public async Task<List<Transactions>> GetAllTransactionsAsync()
         {
-            return _context.transactions.ToList();
+            return await _context.transactions.ToListAsync();
         }
 
-        public Transactions GetTransactionsById(int id)
+        public async Task<Transactions> GetTransactionsByIdAsync(int id)
         {
-            return _context.transactions.Find(id);
+            return await _context.transactions.FindAsync(id);
         }
 
-        public Transactions PostTransactions(Transactions recreation)
+        public async Task<Transactions> PostTransactionsAsync(Transactions recreation)
         {
             _context.transactions.Add(recreation);
+            await _context.SaveChangesAsync();
             return recreation;
         }
 
@@ -38,9 +40,10 @@ namespace Solid.data
         //    rec.Price=recreation.Price;
         //    rec.NameOner=recreation.NameOner;
         //} 
-        public void DeleteTransactions(int id)
+        public async Task DeleteTransactionsAsync(int id)
         {
             _context.transactions.Remove(_context.transactions.Find(id));
+            await _context.SaveChangesAsync();
         }
     }
 }

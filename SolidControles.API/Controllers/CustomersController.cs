@@ -24,46 +24,46 @@ namespace apartmant.Controllers
 
         // GET: api/<RentingController>
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> Get()
         {
-            var customer = _customersService.GetAllCustomers();
+            var customer = await _customersService.GetAllCustomersAsync();
             var customerDto = _mapper.Map<CustomerDto>(customer);
             return Ok(customerDto);
         }
 
         // GET api/<RentingController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            var customers = _customersService.GetAllCustomers();
+            var customers = await _customersService.GetAllCustomersAsync();
             var customerDto = _mapper.Map<IEnumerable <CustomerDto>>(customers);
             return Ok(customerDto);
-            return Ok(_customersService.GetCustomerById(id));
+            return Ok(_customersService.GetCustomerByIdAsync(id));
         }
 
         // POST api/<RentingController>
         [HttpPost]
-        public ActionResult Post([FromBody] CustomerPostModel customerPostModel)
+        public async Task<ActionResult> Post([FromBody] CustomerPostModel customerPostModel)
         {
             var customer = _mapper.Map<Customer>(customerPostModel);
-            var newCustomer=_customersService.PostCustomer(customer);
+            var newCustomer=await _customersService.PostCustomerAsync(customer);
             var customerDto = _mapper.Map<CustomerDto>(newCustomer);
             return Ok(customerDto);
         }
 
         // PUT api/<RentingController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CustomerPostModel customerPostModel)
+        public async Task Put(int id, [FromBody] CustomerPostModel customerPostModel)
         {
             var customer = _mapper.Map<Customer>(customerPostModel);
-            _customersService.PutCustomer(id, customer);
+            await _customersService.PutCustomerAsync(id, customer);
         }
 
         // DELETE api/<RentingController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _customersService.DeleteCustomer(id);
+           await _customersService.DeleteCustomerAsync(id);
         }
     }
 }

@@ -23,28 +23,28 @@ namespace apartmant.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> Get()
         {
-            var transactions = _transactionsService.GetAllTransactions();
+            var transactions = await _transactionsService.GetAllTransactionsAsync();
             var transactionsDto = _mapper.Map<IEnumerable<TransactionDto>>(transactions);
             return Ok(transactionsDto);
         }
 
         // GET api/<RecreationController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            var transaction = _transactionsService.GetTransactionsById(id);
+            var transaction = await _transactionsService.GetTransactionsByIdAsync(id);
             var transactionDto = _mapper.Map<TransactionDto>(transaction);
             return Ok(transactionDto);
         }
 
         // POST api/<RecreationController>
         [HttpPost]
-        public ActionResult Post([FromBody] TransactionPostModel transactionPostModel)
+        public async Task<ActionResult> Post([FromBody] TransactionPostModel transactionPostModel)
         {
             var transaction = _mapper.Map<Transactions>(transactionPostModel);
-            var newTransaction =_transactionsService.PostTransactions(transaction);
+            var newTransaction = await _transactionsService.PostTransactionsAsync(transaction);
             var transactionDto = _mapper.Map<TransactionDto>(newTransaction);
             return Ok(transactionDto);
         }
@@ -59,9 +59,9 @@ namespace apartmant.Controllers
 
         // DELETE api/<RecreationController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _transactionsService.DeleteTransactions(id);
+           await _transactionsService.DeleteTransactionsAsync(id);
         }
     }
 }

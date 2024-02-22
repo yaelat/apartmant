@@ -9,10 +9,10 @@ namespace Solid.Core.Repositories
 {
     public interface ITransactionsRepository
     {
-        List<Transactions> GetAllTransactions();
-        Transactions GetTransactionsById(int id);
-        Transactions PostTransactions(Transactions transactions);
+        Task<List<Transactions>> GetAllTransactionsAsync();
+        Task<Transactions> GetTransactionsByIdAsync(int id);
+        Task<Transactions> PostTransactionsAsync(Transactions recreation);
         //void PutRecreation(int id, Transactions transactions);
-        void DeleteTransactions(int id);
+        Task DeleteTransactionsAsync(int id);
     }
 }

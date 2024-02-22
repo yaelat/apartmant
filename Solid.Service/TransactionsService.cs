@@ -14,24 +14,24 @@ namespace Solid.Service
             _transactionsRepository = recreationRepository;
         }
 
-        public void DeleteTransactions(int id)
+        public async Task DeleteTransactionsAsync(int id)
         {
-            _transactionsRepository.DeleteTransactions(id);
+           await _transactionsRepository.DeleteTransactionsAsync(id);
         }
 
-        public List<Transactions> GetAllTransactions()
+        public async Task<List<Transactions>> GetAllTransactionsAsync()
         {
-            return _transactionsRepository.GetAllTransactions();
+            return await _transactionsRepository.GetAllTransactionsAsync();
         }
 
-        public Transactions GetTransactionsById(int id)
+        public async Task<Transactions> GetTransactionsByIdAsync(int id)
         {
-            return _transactionsRepository.GetTransactionsById(id);
+            return await _transactionsRepository.GetTransactionsByIdAsync(id);
         }
 
-        public Transactions PostTransactions(Transactions transactions)
+        public async Task<Transactions> PostTransactionsAsync(Transactions recreation)
         {
-            return _transactionsRepository.PostTransactions(transactions);
+            return await _transactionsRepository.PostTransactionsAsync(transactions);
         }
 
         //public void PutRecreation(int id, Transactions transactions)

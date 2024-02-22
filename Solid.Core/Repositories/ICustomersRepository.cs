@@ -9,11 +9,11 @@ namespace Solid.Core.Repositories
 {
     public interface ICustomersRepository
     {
-        List<Customer> GetAllCustomers();
-        Customer GetCustomerById(int id);
-        Customer PostCustomer(Customer customer);   
-        void PutCustomer(int id,Customer customer);
-        void DeleteCustomer(int id);
+        Task<List<Customer>> GetAllCustomersAsync();
+        Task<Customer> GetCustomerByIdAsync(int id);
+        Task<Customer> PostCustomerAsync(Customer customer);
+        Task PutCustomerAsync(int id, Customer customer);
+        Task DeleteCustomerAsync(int id);
 
     }
 }

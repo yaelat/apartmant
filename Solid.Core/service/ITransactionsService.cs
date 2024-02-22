@@ -9,10 +9,10 @@ namespace Solid.Core.service
 {
     public interface ITransactionsService
     {
-        List<Transactions> GetAllTransactions();
-        Transactions GetTransactionsById(int id);
-        Transactions PostTransactions(Transactions transactions);
-        //void PutTransactions(int id, Transactions transactions);
-        void DeleteTransactions(int id);
+        Task<List<Transactions>> GetAllTransactionsAsync();
+        Task<Transactions> GetTransactionsByIdAsync(int id);
+        Task<Transactions> PostTransactionsAsync(Transactions recreation);
+        //void PutRecreation(int id, Transactions transactions);
+        Task DeleteTransactionsAsync(int id);
     }
 }
